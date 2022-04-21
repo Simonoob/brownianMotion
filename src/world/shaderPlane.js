@@ -27,19 +27,12 @@ export default class ShaderPlane {
 						y: this.geometry.parameters.height,
 					},
 				},
+                uSeed: {value: Math.random()},
 				uCursor: { value: new THREE.Vector2(0) },
 				uCursorHover: { value: false },
 				uCursorEnter: { value: false },
 				uCursorLeave: { value: false },
 				uSpeed: { value: 1 },
-				uTexture: { value: this.resources.items.guyProfileTexture },
-				uTextureResolution: {
-					value: {
-						x: this.resources.items.guyProfileTexture.image.width,
-						y: this.resources.items.guyProfileTexture.image.height,
-					},
-				},
-				uBlocks: { value: 12 },
 			},
 		})
 
@@ -53,29 +46,6 @@ export default class ShaderPlane {
 			index: 0,
 		})
 
-		this.debugFolder
-			.addInput(this.params, 'texture', {
-				view: 'list',
-				options: [
-					{
-						text: 'Guy Profile',
-						value: this.resources.items.guyProfileTexture,
-					},
-					{
-						text: 'Beautiful Doggo',
-						value: this.resources.items.doggoTexture,
-					},
-				],
-				label: 'Texture',
-			})
-			.on('change', event => {
-				this.material.uniforms.uTexture.value = event.value
-				this.material.uniforms.uTextureResolution.value = {
-					x: event.value.image.width,
-					y: event.value.image.height,
-				}
-			})
-
 		this.debugFolder.addInput(this.material.uniforms.uSpeed, 'value', {
 			step: 0.1,
 			min: 0,
@@ -83,12 +53,6 @@ export default class ShaderPlane {
 			label: 'Speed',
 		})
 
-		this.debugFolder.addInput(this.material.uniforms.uBlocks, 'value', {
-			step: 1,
-			min: 1,
-			max: 50,
-			label: 'Squares',
-		})
 	}
 
 	update = () => {

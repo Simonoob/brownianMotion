@@ -42,7 +42,7 @@ export default class Camera {
 			0.1,
 			100,
 		)
-		this.instance.position.set(0, 1, 4)
+		this.instance.position.set(0, 1, window.innerWidth<500 ? 4 : 2)
 		this.instance.aspect = this.sizes.width / this.sizes.height
 		this.instance.updateProjectionMatrix()
 		this.scene.add(this.instance)
