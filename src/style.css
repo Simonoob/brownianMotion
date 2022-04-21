@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'JetBrains Mono', monospace;
+}
+
+html,
+body {
+	height: 100vh;
+	background-color: black;
+}
+
+.webgl {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100vw;
+	height: 100vh;
+}
+
+#loader {
+	display: visible;
+	font-size: 1.5rem;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+.loader_disabled {
+	display: none;
+}
+
+.lds-ripple div {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border: 4px solid #fff;
+	opacity: 1;
+	border-radius: 50%;
+	animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+	animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+	0% {
+		width: 5rem;
+		height: 5rem;
+		opacity: 0.5;
+	}
+	100% {
+		width: 20rem;
+		height: 20rem;
+		opacity: 0;
+	}
+}
+
+/* TWEAKPANE THEME */
+:root {
+	--tp-base-background-color: hsla(0, 80%, 40%, 1);
+	--tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+	--tp-button-background-color: hsla(0, 0%, 100%, 1);
+	--tp-button-background-color-active: hsla(0, 0%, 85%, 1);
+	--tp-button-background-color-focus: hsla(0, 0%, 90%, 1);
+	--tp-button-background-color-hover: hsla(0, 0%, 95%, 1);
+	--tp-button-foreground-color: hsla(230, 20%, 11%, 1);
+	--tp-container-background-color: hsla(0, 0%, 0%, 0.2);
+	--tp-container-background-color-active: hsla(0, 0%, 0%, 0.35);
+	--tp-container-background-color-focus: hsla(0, 0%, 0%, 0.3);
+	--tp-container-background-color-hover: hsla(0, 0%, 0%, 0.25);
+	--tp-container-foreground-color: hsla(0, 0%, 100%, 0.9);
+	--tp-groove-foreground-color: hsla(0, 0%, 0%, 0.5);
+	--tp-input-background-color: hsla(0, 0%, 0%, 0.5);
+	--tp-input-background-color-active: hsla(0, 0%, 0%, 0.65);
+	--tp-input-background-color-focus: hsla(0, 0%, 0%, 0.6);
+	--tp-input-background-color-hover: hsla(0, 0%, 0%, 0.55);
+	--tp-input-foreground-color: hsla(0, 0%, 100%, 0.9);
+	--tp-label-foreground-color: hsla(0, 0%, 100%, 0.9);
+	--tp-monitor-background-color: hsla(0, 0%, 0%, 0.5);
+	--tp-monitor-foreground-color: hsla(0, 0%, 100%, 0.5);
+}
