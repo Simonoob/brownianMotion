@@ -72,10 +72,10 @@ void main()
     time *= 0.0001 * uSpeed;
     vec2 mouse = uCursor/uSurfaceResolution;
 
-    float hue = fract(mix(0.0, 1.0, time * 0.1 + uSeed));
+    float hue = uSeed;
 
     vec3 hsv1 = vec3(hue, 0.9, 0.85);
-    vec3 hsv2 = vec3(hue + 0.07, 0.85, 0.75);
+    vec3 hsv2 = vec3(hue, 0.8, 0.75);
 
     vec3 rgb1 = hsv2rgb(hsv1);
     vec3 rgb2 = hsv2rgb(hsv2);
@@ -94,20 +94,20 @@ void main()
     // step+= noise(uv * 16.0) * 0.0625;
     // step+= noise(uv * 32.0) * 0.03125;
 
-    float grain = rand(100.0 * uv) * mix(0.2, 0.01, strength);
+    float grain = rand(uv) * mix(0.1, 0.01, strength);
 
     //interactivity
     vec2 movement = vec2(time * 0.1);
     movement *= rotation2d(time * 0.01);
 
     //FBM via algo
-    float noise = fbm(uv + movement + uSeed);
+    float noise = fbm(uv + movement + uSeed) * 2.0 * mix(1.0, 0.97, strength);
     noise *= 10.0;
     noise += grain;
     noise += time;
     noise = fract(noise);
 
-    float gap = mix(0.5, 0.01, strength);
+    float gap = mix(0.25, 0.01, strength);
     //get soft edges 
     float mixer = smoothstep(0.0, gap, noise) - smoothstep(1.0 - gap, 1.0, noise);
 

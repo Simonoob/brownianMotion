@@ -27,7 +27,7 @@ export default class ShaderPlane {
 						y: this.geometry.parameters.height,
 					},
 				},
-                uSeed: {value: Math.random()},
+				uSeed: { value: Math.random() * (0.5 - 0.4) + 0.4 },
 				uCursor: { value: new THREE.Vector2(0) },
 				uCursorHover: { value: false },
 				uCursorEnter: { value: false },
